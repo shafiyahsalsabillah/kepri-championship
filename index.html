@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kepri Championship 2025</title>
@@ -337,12 +338,12 @@
 
   </select>
   
-  <input type="tel" id="phone-number" placeholder="81234567890" style="flex: 1; padding: 8px;">
-</div>
+<label for="phone">Phone Number</label>
+<input id="phone" type="tel" name="phone" required>
 
+</div>
 <!-- Hidden input buat kirim gabungan -->
 <input type="hidden" name="phone" id="full-phone">
-  
 </div>
 
 
@@ -640,6 +641,29 @@
   numberInput.addEventListener('input', updateFullPhone);
 </script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+<script>
+  const phoneInputField = document.querySelector("#phone");
+  const iti = window.intlTelInput(phoneInputField, {
+    initialCountry: "auto",
+    geoIpLookup: function(callback) {
+      fetch('https://ipinfo.io/json')
+        .then(response => response.json())
+        .then(data => callback(data.country))
+        .catch(() => callback('us'));
+    },
+    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+  });
+
+  // Optional: Tambahkan event listener untuk memproses nomor telepon saat form disubmit
+  const form = document.querySelector("form");
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const phoneNumber = iti.getNumber();
+    console.log(phoneNumber);
+    // Lanjutkan dengan proses pengiriman form
+  });
+</script>
 
 </body>
 </html>
