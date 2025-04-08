@@ -427,35 +427,49 @@ function addPlayer() {
   }
 
   document.getElementById("registration-form").addEventListener("submit", function (e) {
-    let filledPlayers = 0;
+  let filledPlayers = 0;
 
-    for (let i = 1; i <= 12; i++) {
-      const name = document.querySelector(`[name="player_${i}_full_name"]`);
-      const dob = document.querySelector(`[name="player_${i}_dob"]`);
-      const id = document.querySelector(`[name="player_${i}_id"]`);
-      const jersey = document.querySelector(`[name="player_${i}_jersey"]`);
-      const position = document.querySelector(`[name="player_${i}_position"]`);
+  // Hitung jumlah pemain yang sudah diisi
+  for (let i = 1; i <= 12; i++) {
+    const name = document.querySelector(`[name="player_${i}_full_name"]`);
+    const dob = document.querySelector(`[name="player_${i}_dob"]`);
+    const id = document.querySelector(`[name="player_${i}_id"]`);
+    const jersey = document.querySelector(`[name="player_${i}_jersey"]`);
+    const position = document.querySelector(`[name="player_${i}_position"]`);
 
-      if (
-        name && dob && id && jersey && position &&
-        name.value.trim() !== "" &&
-        dob.value.trim() !== "" &&
-        id.value.trim() !== "" &&
-        jersey.value.trim() !== "" &&
-        position.value.trim() !== ""
-      ) {
-        filledPlayers++;
-      }
+    // Debugging log untuk melihat apakah semua input diisi
+    console.log(`Player ${i}:`, {
+      name: name ? name.value.trim() : "No name",
+      dob: dob ? dob.value.trim() : "No DOB",
+      id: id ? id.value.trim() : "No ID",
+      jersey: jersey ? jersey.value.trim() : "No Jersey",
+      position: position ? position.value.trim() : "No Position"
+    });
+
+    if (
+      name && dob && id && jersey && position &&
+      name.value.trim() !== "" &&
+      dob.value.trim() !== "" &&
+      id.value.trim() !== "" &&
+      jersey.value.trim() !== "" &&
+      position.value.trim() !== ""
+    ) {
+      filledPlayers++;
     }
+  }
 
-    if (filledPlayers < 5) {
-      e.preventDefault();
-      alert("Minimum 5 players are required to register.");
-    } else if (filledPlayers > 12) {
-      e.preventDefault();
-      alert("Maximum number of players is 12.");
-    }
-  });
+  // Debugging log untuk jumlah pemain yang diisi
+  console.log("Filled Players:", filledPlayers);
+
+  // Validasi minimum 5 pemain dan maksimum 12 pemain
+  if (filledPlayers < 5) {
+    e.preventDefault();
+    alert("Minimum 5 players are required to register.");
+  } else if (filledPlayers > 12) {
+    e.preventDefault();
+    alert("Maximum number of players is 12.");
+  }
+});
 </script>
   
   <script>
