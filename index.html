@@ -392,5 +392,38 @@
       container.appendChild(div);
     }
   </script>
+  <script>
+  document.getElementById("registration-form").addEventListener("submit", function (e) {
+    let filledPlayers = 0;
+
+    for (let i = 1; i <= 12; i++) {
+      const name = document.querySelector(`[name="player_${i}_name"]`);
+      const dob = document.querySelector(`[name="player_${i}_dob"]`);
+      const id = document.querySelector(`[name="player_${i}_id"]`);
+      const jersey = document.querySelector(`[name="player_${i}_jersey"]`);
+      const position = document.querySelector(`[name="player_${i}_position"]`);
+
+      if (
+        name && dob && id && jersey && position &&
+        name.value.trim() !== "" &&
+        dob.value.trim() !== "" &&
+        id.value.trim() !== "" &&
+        jersey.value.trim() !== "" &&
+        position.value.trim() !== ""
+      ) {
+        filledPlayers++;
+      }
+    }
+
+    if (filledPlayers < 5) {
+      e.preventDefault();
+      alert("Minimum 5 players are required to register.");
+    } else if (filledPlayers > 12) {
+      e.preventDefault();
+      alert("Maximum number of players is 12.");
+    }
+  });
+</script>
+
 </body>
 </html>
