@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+  }
+  body {
+    background: linear-gradient(rgba(255, 221, 102, 0.5), rgba(255, 187, 51, 0.7)), url('background-image.jpg') center/cover no-repeat;
+    min-height: 100vh;
+    color: black;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+  header {
+    margin-bottom: 1rem;
+  }
+  .logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 60px;
+  }
+  .menu-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+  }
+  .tournament-logo {
+    max-width: 150px;
+    margin: 0 auto 1rem;
+  }
+  h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  .buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .buttons button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
+  .register {
+    background: black;
+    color: white;
+  }
+  .register:hover {
+    background: #222;
+  }
+  .learn {
+    background: #ffcc00;
+    color: black;
+  }
+  .learn:hover {
+    background: #e6b800;
+  }
+  
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+  }
+  
+  .back-button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .logo {
+    height: 50px;
+  }
+  
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  .back-button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  

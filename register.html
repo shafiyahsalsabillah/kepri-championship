@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Team Registration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+    }
+
+    header {
+      background-color: #000;
+      padding: 20px;
+      text-align: left;
+      color: white;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: #fdfdfd;
+      padding: 30px;
+      border-radius: 8px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+      width: 100%;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .success {
+      text-align: center;
+      margin-top: 100px;
+      font-size: 24px;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>MAXIM EVENTS</h1>
+</header>
+
+<div class="container hidden" id="form-container">
+    <div class="top-bar">
+      <button class="back-button" onclick="goBack()">← Back</button>
+      <img src="images/yr-logo.png" alt="YR EO Logo" class="logo">
+    </div>
+  
+  <h2>Enter Team Details</h2>
+  <form id="team-form">
+    <label>Team Name</label>
+    <input type="text" required>
+
+    <label>Coach Name</label>
+    <input type="text" required>
+
+    <label>Email</label>
+    <input type="email" required>
+
+    <label>Phone</label>
+    <input type="tel" required>
+
+    <label>Team Nationality</label>
+    <select required>
+      <option value="">Select a country</option>
+      <option>Indonesia</option>
+      <option>Malaysia</option>
+      <option>Thailand</option>
+    </select>
+
+    <label>Age Groups</label>
+    <select required>
+      <option value="">Select age groups</option>
+      <option>U12</option>
+      <option>U14</option>
+      <option>U16</option>
+    </select>
+
+    <button type="submit">Please select an age group and tournament</button>
+  </form>
+</div>
+
+<div class="success" id="success-message" style="display:none;">
+  🎉 Thank you! Your team has been successfully registered.
+</div>
+
+<script>
+  document.getElementById('team-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    document.getElementById('form-container').style.display = 'none';
+    document.getElementById('success-message').style.display = 'block';
+  });
+</script>
+
+</body>
+</html>
