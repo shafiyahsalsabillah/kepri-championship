@@ -368,7 +368,7 @@
       document.getElementById("registration-page").classList.add("hidden");
       document.getElementById("home-page").classList.remove("hidden");
     }
-
+<script>
     let playerCount = 0;
 function addPlayer() {
   if (playerCount >= 12) {
@@ -404,10 +404,9 @@ function addPlayer() {
 
    <label>Recent Photo</label>
 <input type="file" name="player_${playerCount}_photo" accept="image/*" required onchange="validatePhoto(this)">
+`;
   container.appendChild(div);
 }
-<script>
-  // ... fungsi lain seperti goToRegistration, addPlayer, dsb
 
   function validatePhoto(input) {
     const file = input.files[0];
@@ -428,9 +427,48 @@ function addPlayer() {
       return;
     }
   }
-</script>
 
-  </script>
+  function goToRegistration() {
+    document.getElementById("home-page").classList.add("hidden");
+    document.getElementById("registration-page").classList.remove("hidden");
+  }
+
+  function goBack() {
+    document.getElementById("registration-page").classList.add("hidden");
+    document.getElementById("home-page").classList.remove("hidden");
+  }
+
+  document.getElementById("registration-form").addEventListener("submit", function (e) {
+    let filledPlayers = 0;
+
+    for (let i = 1; i <= 12; i++) {
+      const name = document.querySelector(`[name="player_${i}_full_name"]`);
+      const dob = document.querySelector(`[name="player_${i}_dob"]`);
+      const id = document.querySelector(`[name="player_${i}_id"]`);
+      const jersey = document.querySelector(`[name="player_${i}_jersey"]`);
+      const position = document.querySelector(`[name="player_${i}_position"]`);
+
+      if (
+        name && dob && id && jersey && position &&
+        name.value.trim() !== "" &&
+        dob.value.trim() !== "" &&
+        id.value.trim() !== "" &&
+        jersey.value.trim() !== "" &&
+        position.value.trim() !== ""
+      ) {
+        filledPlayers++;
+      }
+    }
+
+    if (filledPlayers < 5) {
+      e.preventDefault();
+      alert("Minimum 5 players are required to register.");
+    } else if (filledPlayers > 12) {
+      e.preventDefault();
+      alert("Maximum number of players is 12.");
+    }
+  });
+</script>
   
   <script>
   document.getElementById("registration-form").addEventListener("submit", function (e) {
