@@ -112,6 +112,19 @@
     .hidden {
       display: none;
     }
+    .player-title {
+  margin-bottom: 16px;
+  margin-top: 30px;
+}
+
+.player-list {
+  margin-bottom: 20px;
+}
+
+.add-player-button {
+  margin-bottom: 30px;
+}
+
   </style>
 </head>
 <body>
@@ -332,11 +345,11 @@
         <option>U13 (Under 13)</option>
         <option>U15 (Under 15)</option>
       </select>
- <h3 class="center">Player List (Max 12 Players)</h3>
-      <div id="players-container"></div>
-      <div class="center">
-        <button type="button" class="button" onclick="addPlayer()">+ Add Player</button>
-      </div>
+<h3 class="center player-title">Player List (Max 12 Players)</h3>
+<div id="players-container" class="player-list"></div>
+<div class="center add-player-button">
+  <button type="button" class="button" onclick="addPlayer()">+ Add Player</button>
+</div>
 
       <br>
 
