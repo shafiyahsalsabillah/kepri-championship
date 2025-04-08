@@ -370,41 +370,69 @@
     }
 
     let playerCount = 0;
-    function addPlayer() {
-      if (playerCount >= 12) {
-        alert("You can only register up to 12 players.");
-        return;
-      }
+function addPlayer() {
+  if (playerCount >= 12) {
+    alert("You can only register up to 12 players.");
+    return;
+  }
 
-      playerCount++;
-      const container = document.getElementById("players-container");
-      const div = document.createElement("div");
-      div.className = "player-entry";
-      div.innerHTML = `
-        <label>Player ${playerCount} Name</label>
-        <input type="text" name="player_${playerCount}_name" required>
+  playerCount++;
+  const container = document.getElementById("players-container");
+  const div = document.createElement("div");
+  div.className = "player-entry";
+  div.innerHTML = `
+    <label>Player ${playerCount} Full Name</label>
+    <input type="text" name="player_${playerCount}_full_name" required>
 
-        <label>Date of Birth</label>
-        <input type="date" name="player_${playerCount}_dob" required>
+    <label>Date of Birth</label>
+    <input type="date" name="player_${playerCount}_dob" required>
 
-        <label>Passport/NISN Number</label>
-        <input type="text" name="player_${playerCount}_id" required>
+    <label>Passport/NISN Number</label>
+    <input type="text" name="player_${playerCount}_id" required>
 
-        <label>Jersey Number</label>
-        <input type="number" name="player_${playerCount}_jersey" required>
+    <label>Jersey Number</label>
+    <input type="number" name="player_${playerCount}_jersey" required>
 
-        <label>Position</label>
-        <select name="player_${playerCount}_position" required>
-          <option value="">Select Position</option>
-          <option value="Goalkeeper">Goalkeeper</option>
-          <option value="Defender">Defender</option>
-          <option value="Midfielder">Midfielder</option>
-          <option value="Striker">Striker</option>
-        </select>
-      `;
-      container.appendChild(div);
+    <label>Position</label>
+    <select name="player_${playerCount}_position" required>
+      <option value="">Select Position</option>
+      <option value="Goalkeeper">Goalkeeper</option>
+      <option value="Defender">Defender</option>
+      <option value="Midfielder">Midfielder</option>
+      <option value="Striker">Striker</option>
+    </select>
+
+   <label>Recent Photo</label>
+<input type="file" name="player_${playerCount}_photo" accept="image/*" required onchange="validatePhoto(this)">
+;
+  container.appendChild(div);
+}
+<script>
+  // ... fungsi lain seperti goToRegistration, addPlayer, dsb
+
+  function validatePhoto(input) {
+    const file = input.files[0];
+    if (!file) return;
+
+    const maxSizeMB = 2;
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+
+    if (!allowedTypes.includes(file.type)) {
+      alert("Only JPG or PNG images are allowed.");
+      input.value = "";
+      return;
     }
+
+    if (file.size > maxSizeMB * 1024 * 1024) {
+      alert("File size must be less than 2MB.");
+      input.value = "";
+      return;
+    }
+  }
+</script>
+
   </script>
+  
   <script>
   document.getElementById("registration-form").addEventListener("submit", function (e) {
     let filledPlayers = 0;
