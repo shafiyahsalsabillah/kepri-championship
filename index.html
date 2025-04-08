@@ -124,9 +124,8 @@
 .add-player-button {
   margin-bottom: 30px;
 }
-
   </style>
-</head>
+</head> 
 <body>
   <!-- Halaman Awal -->
   <div id="home-page">
@@ -163,8 +162,8 @@
       <input type="tel" placeholder="e.g. +60xxxxxxxxx" required>
       
  <label>Team Nationality</label>
-      <select name= "team_nationality" required>
-      <option value="">Select your country</option>
+  <select name= "team_nationality" required>
+    <option value="">Select your country</option>
 <option value="Afghanistan">Afghanistan</option>
 <option value="Albania">Albania</option>
 <option value="Algeria">Algeria</option>
@@ -334,8 +333,7 @@
 <option value="Yemen">Yemen</option>
 <option value="Zambia">Zambia</option>
 <option value="Zimbabwe">Zimbabwe</option>
-
-      </select>
+</select>
 
       <label>Age Group</label>
       <select required>
@@ -357,18 +355,6 @@
     </form>
     <p class="note">After clicking Submit, we will save your registration details and contact you with more information.</p>
   </div>
-
-  <script>
-    function goToRegistration() {
-      document.getElementById("home-page").classList.add("hidden");
-      document.getElementById("registration-page").classList.remove("hidden");
-    }
-
-    function goBack() {
-      document.getElementById("registration-page").classList.add("hidden");
-      document.getElementById("home-page").classList.remove("hidden");
-    }
-  </script>
   
   <script>
     let playerCount = 0;
