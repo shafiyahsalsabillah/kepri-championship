@@ -161,8 +161,8 @@
       <input type="email" name="email" required>
 
       <label for="phone">Phone Number</label>
-<div style="display: flex; flex-direction: column; gap: 8px;">
-<select id="country" name="country" required>
+<div style="display: flex; align-items: center; gap: 8px;">
+ <select id="country-code" style="padding: 8px;">
   <option value="">Select country</option>
   <option value="Afghanistan +93">Afghanistan (+93)</option>
   <option value="Albania +355">Albania (+355)</option>
@@ -335,13 +335,13 @@
   <option value="Zimbabwe +263">Zimbabwe (+263)</option>
 </select>
 
-<br>
+  </select>
+  
+  <input type="tel" id="phone-number" placeholder="81234567890" style="flex: 1; padding: 8px;">
+</div>
 
-<label for="phone">Phone Number:</label>
-<input type="tel" id="phone" required>
-
-<!-- Hidden input untuk hasil akhir (gabungan) -->
-<input type="hidden" name="full_phone" id="full_phone">
+<!-- Hidden input buat kirim gabungan -->
+<input type="hidden" name="phone" id="full-phone">
   
 </div>
 
@@ -624,20 +624,20 @@
     }
   });
 </script>
+
 <script>
-  const countrySelect = document.getElementById('country');
-  const phoneInput = document.getElementById('phone');
-  const fullPhoneInput = document.getElementById('full_phone');
+  const codeSelect = document.getElementById('country-code');
+  const numberInput = document.getElementById('phone-number');
+  const fullPhone = document.getElementById('full-phone');
 
   function updateFullPhone() {
-    const countryCode = countrySelect.value;
-    const phoneNumber = phoneInput.value.replace(/^0+/, ''); // hilangkan nol di awal
-    fullPhoneInput.value = countryCode + phoneNumber;
+    const code = codeSelect.value;
+    const number = numberInput.value.replace(/^0+/, '');
+    fullPhone.value = code + number;
   }
 
-  // Jalankan saat user ubah negara atau nomor
-  countrySelect.addEventListener('change', updateFullPhone);
-  phoneInput.addEventListener('input', updateFullPhone);
+  codeSelect.addEventListener('change', updateFullPhone);
+  numberInput.addEventListener('input', updateFullPhone);
 </script>
 
 
